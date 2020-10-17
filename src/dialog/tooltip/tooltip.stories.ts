@@ -109,7 +109,19 @@ storiesOf("Components|Tooltip", module)
 			`,
 			props: {
 				placement: select("Tooltip direction", ["bottom", "top", "left", "right"], "bottom"),
-				offset: object("Horizontal and vertical offset", { x: 0, y: 0 })
+				// get displacement(): number { return this.placement === "left" ? -10 : 0; },
+				// displacement: -10,
+				// offset: object("Horizontal and vertical offset", { x: 0, y: this.placement}),
+				get offset(): string {
+					// console.log("placement is ", this.placement);
+					// const notLeft = { x: 0, y: 0};
+					// const left = { x: 0, y: -10 };
+					// const text = "Horizontal and vertical offset";
+					const result = this.placement === "left" ? console.log("it's left") : console.log("it's not left");
+					return `${text}${result}`; }
+				// offset: object("Horizontal and vertical offset", { x: 0, y: 0}),
+				// get hello(): string { return this.placement; }
+				// hello: this.placement
 			}
 	}))
 	.add("Multiple tooltips", () => ({
